@@ -1,15 +1,20 @@
 import React, { Fragment, useEffect } from 'react';
 import axios from 'axios';
 
+// imported components
+import Messages from './components/Messages';
+
+// Redux
+import { Provider } from 'react-redux';
+import store from './store';
+
 const App = () => {
-  useEffect(() => {
-    axios.get('/posts')
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err))
-  }, []);
 
   return (
-    <div>WELCOME</div>
+    <Provider store={store}>
+      <div>WELCOME</div>
+      <Messages/>
+    </Provider>
   )
 };
 
