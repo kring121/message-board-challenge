@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --port 3000 --mode development --open --hot",
+    "server": "json-server --watch db.json --port 5000",
+    "client": "webpack-dev-server --port 3000 --mode development --open --hot",
+    "start" : "concurrently \"yarn server\" \"yarn client\"",
     "build": "webpack --mode production"
   },
   "repository": "https://github.com/kring121/message-board-challenge.git",
   "author": "Christian von Lehe <kring.vonlehe@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "json-server": "^0.14.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
@@ -23,6 +26,7 @@
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "concurrently": "^4.1.0",
     "css-loader": "^2.1.1",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^0.23.1",
