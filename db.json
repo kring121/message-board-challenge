@@ -3,7 +3,9 @@
     { "id": 1, "title": "json-server", "author": "typicode" }
   ],
   "comments": [
-    { "id": 1, "body": "some comment", "messageId": 1 }
+    { "id": 1, "body": "some comment", "messageId": 1, "author": "typicode" }
   ],
-  "profile": { "name": "typicode" }
+  "users": [
+    { "id": 1, "name": "typicode", "password": "password" }
+  ]
 }

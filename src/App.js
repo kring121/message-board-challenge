@@ -1,8 +1,11 @@
 import React, { Fragment, useEffect } from 'react';
 import axios from 'axios';
+import './App.css';
 
 // imported components
 import Messages from './components/messages/Messages';
+import Landing from './components/layout/Landing';
+import Navbar from './components/layout/Navbar';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -12,8 +15,8 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <div>WELCOME</div>
-      <Messages/>
+      <Navbar/>
+      <Landing/>
     </Provider>
   )
 };
