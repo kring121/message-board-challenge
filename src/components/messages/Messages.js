@@ -1,7 +1,10 @@
 import React, { Fragment, useEffect} from 'react';
 import PropTypes from 'prop-types';
+import MessageItem from './MessageItem';
+
+// Redux
 import { connect } from 'react-redux';
-import { getMessages } from '../actions/messages';
+import { getMessages } from '../../actions/messages';
 
 const Messages = ({ getMessages, messages: { messages } }) => {
   useEffect(() => {
@@ -12,10 +15,7 @@ const Messages = ({ getMessages, messages: { messages } }) => {
     <Fragment>
       <h1>Messages</h1>
       {messages.map(message => (
-          <div key={message.id}>
-            <h1>{message.title}</h1>
-            <h2>{message.author}</h2>
-          </div>
+          <MessageItem key={message.id} message={message}/>
         ))
       }
     </Fragment>

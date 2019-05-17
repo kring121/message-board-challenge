@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import axios from 'axios';
 
 // imported components
-import Messages from './components/Messages';
+import Messages from './components/messages/Messages';
 
 // Redux
 import { Provider } from 'react-redux';
