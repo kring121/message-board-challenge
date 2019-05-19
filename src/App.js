@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 
@@ -15,8 +16,15 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <Navbar/>
-      <Landing/>
+      <BrowserRouter>
+        <Fragment>
+          <Navbar/>
+          <Route exact path='/' component={Landing}/>
+          <Switch>
+            <Route exact path='/messages' component={Messages}/>
+          </Switch>
+        </Fragment>
+      </BrowserRouter>
     </Provider>
   )
 };

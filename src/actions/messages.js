@@ -3,7 +3,7 @@ import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR } from './types';
 
 export const getMessages = () => async dispatch => {
   try {
-    const res = await axios.get('/messages?_embed=comments');
+    const res = await axios.get('/api/messages?_embed=comments');
     dispatch({
       type: GET_MESSAGES,
       payload: res.data
@@ -18,7 +18,7 @@ export const getMessages = () => async dispatch => {
 
 export const getMessage = (id) => async dispatch => {
   try {
-    const res = await axios.get(`/messages/${id}?_embed=comments`);
+    const res = await axios.get(`/api/messages/${id}?_embed=comments`);
     dispatch({
       type: GET_MESSAGE,
       payload: res.data
