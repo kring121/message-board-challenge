@@ -6,7 +6,7 @@ import MessageItem from './MessageItem';
 import { connect } from 'react-redux';
 import { getMessages } from '../../actions/messages';
 
-const Messages = ({ getMessages, messages: { messages } }) => {
+const Messages = ({ getMessages, messages }) => {
   useEffect(() => {
     getMessages();
   }, [getMessages]);
@@ -24,11 +24,11 @@ const Messages = ({ getMessages, messages: { messages } }) => {
 
 Messages.propTypes = {
   getMessages: PropTypes.func.isRequired,
-  messages: PropTypes.object.isRequired
+  messages: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
-  messages: state.messages
+  messages: state.messages.messages
 });
 
 export default connect(
