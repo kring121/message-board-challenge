@@ -1,8 +1,9 @@
-import { LAUNCH_SIGNUP, LAUNCH_LOGIN, CLOSE_AUTH_MODAL } from '../actions/types';
+import { LAUNCH_SIGNUP, LAUNCH_LOGIN, CLOSE_AUTH_MODAL, LOGIN_SUCCESS, LOGIN_FAIL } from '../actions/types';
 
 const initialState = {
   signUpLaunched: false,
-  loginLaunched: false
+  loginLaunched: false,
+  isAuthenticated: null
 }
 
 export default function(state = initialState, action) {
@@ -26,6 +27,16 @@ export default function(state = initialState, action) {
         ...state,
         signUpLaunched: false,
         loginLaunched: false
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: true
+      };
+    case LOGIN_FAIL:
+      return {
+        ...state,
+        isAuthenticated: false
       }
     default:
       return state;

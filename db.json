@@ -6,6 +6,6 @@
     { "id": 1, "body": "some comment", "messageId": 1, "author": "typicode" }
   ],
   "users": [
-    { "id": 1, "name": "typicode", "password": "password" }
+    { "id": 1, "username": "typicode", "password": "password" }
   ]
 }

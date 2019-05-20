@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Login from '../auth/Login';
 import SignUp from '../auth/SignUp';
 
@@ -20,6 +21,13 @@ const Landing = ({ launchSignup, launchLogin, loginLaunched, signUpLaunched }) =
     </div>
   </div>
 );
+
+Landing.propTypes = {
+  launchSignup: PropTypes.func.isRequired,
+  launchLogin: PropTypes.func.isRequired,
+  loginLaunched: PropTypes.bool.isRequired,
+  signUpLaunched: PropTypes.bool.isRequired
+};
 
 const mapStateToProps = state => ({
   loginLaunched: state.auth.loginLaunched,

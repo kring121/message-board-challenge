@@ -5,3 +5,5 @@ export const MESSAGE_ERROR = 'MESSAGE_ERROR';
 export const LAUNCH_SIGNUP = 'LAUNCH_SIGNUP';
 export const LAUNCH_LOGIN = 'LAUNCH_LOGIN';
 export const CLOSE_AUTH_MODAL = 'CLOSE_AUTH_MODAL';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
