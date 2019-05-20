@@ -1,4 +1,4 @@
-import { LAUNCH_SIGNUP, LAUNCH_LOGIN, CLOSE_AUTH_MODAL, LOGIN_SUCCESS, LOGIN_FAIL } from '../actions/types';
+import { LAUNCH_SIGNUP, LAUNCH_LOGIN, CLOSE_AUTH_MODAL, LOGIN_SUCCESS, LOGIN_FAIL, SIGNUP_SUCCESS, SIGNUP_FAIL } from '../actions/types';
 
 const initialState = {
   signUpLaunched: false,
@@ -29,11 +29,13 @@ export default function(state = initialState, action) {
         loginLaunched: false
       };
     case LOGIN_SUCCESS:
+    case SIGNUP_SUCCESS:
       return {
         ...state,
         isAuthenticated: true
       };
     case LOGIN_FAIL:
+    case SIGNUP_FAIL:
       return {
         ...state,
         isAuthenticated: false

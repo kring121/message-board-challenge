@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Redux
 import { connect } from 'react-redux';
-import { launchLogin, closeAuthModal } from '../../actions/auth';
+import { launchLogin, closeAuthModal, signUp } from '../../actions/auth';
 
-const SignUp = ({ launchLogin, closeAuthModal }) => {
+const SignUp = ({ launchLogin, closeAuthModal, signUp }) => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -14,13 +15,15 @@ const SignUp = ({ launchLogin, closeAuthModal }) => {
 
   const { username, password, confirmPassword } = formData;
 
-  const onChange = e => {
+  const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
   const onSubmit = (e) => {
     e.preventDefault();
-    login(username, password);
+    if(password === confirmPassword) {
+      signUp(username, password);
+    }
   }
 
   return (
@@ -55,7 +58,7 @@ const SignUp = ({ launchLogin, closeAuthModal }) => {
           <label>Confirm Password</label>
           <input
             type='password'
-            name='confirm-password'
+            name='confirmPassword'
             required
             placeholder='Confirm Password'
             onChange={e => onChange(e)}
@@ -65,10 +68,16 @@ const SignUp = ({ launchLogin, closeAuthModal }) => {
         <p className='mt-2 text-center'>Already registered? <a onClick={launchLogin}>Login</a></p>
       </form>
     </div>
-  )
+  );
 }
+
+SignUp.propTypes = {
+  launchLogin: PropTypes.func.isRequired,
+  closeAuthModal: PropTypes.func.isRequired,
+  signUp: PropTypes.func.isRequired
+};
 
 export default connect(
   null,
-  { launchLogin, closeAuthModal }
+  { launchLogin, closeAuthModal, signUp }
 )(SignUp);

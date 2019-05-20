@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LAUNCH_SIGNUP, LAUNCH_LOGIN, CLOSE_AUTH_MODAL, LOGIN_SUCCESS, LOGIN_FAIL } from './types';
+import { LAUNCH_SIGNUP, LAUNCH_LOGIN, CLOSE_AUTH_MODAL, LOGIN_SUCCESS, LOGIN_FAIL, SIGNUP_SUCCESS, SIGNUP_FAIL } from './types';
 
 export const launchSignup = () => dispatch => {
   dispatch({
@@ -36,5 +36,28 @@ export const login = (username, password) => async dispatch => {
       dispatch({
         type: LOGIN_FAIL
       });
+  }
+}
+
+export const signUp = (username, password) => async dispatch => {
+  const body = {username, password};
+
+  try {
+    const userExists = await axios.get(`/api/users?username=${username}`);
+
+    if(userExists.data.length === 0) {
+      const res = await axios.post('/api/users', body);
+      dispatch({
+        type: SIGNUP_SUCCESS
+      });
+    } else {
+      dispatch({
+        type: SIGNUP_FAIL
+      })
+    }
+  } catch(err) {
+    dispatch({
+      type: SIGNUP_FAIL
+    });
   }
 }

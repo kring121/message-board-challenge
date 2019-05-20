@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Redux
@@ -54,7 +55,13 @@ const Login = ({ launchSignup, closeAuthModal, login }) => {
         <p className='mt-2 text-center'>Not registered? <a onClick={launchSignup}>Create an account</a></p>
       </form>
     </div>
-  )
+  );
+};
+
+Login.propTypes = {
+  launchSignup: PropTypes.func.isRequired,
+  closeAuthModal: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired
 };
 
 export default connect(

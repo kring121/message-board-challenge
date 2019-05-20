@@ -1,11 +1,29 @@
 {
   "messages": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
   ],
   "comments": [
-    { "id": 1, "body": "some comment", "messageId": 1, "author": "typicode" }
+    {
+      "id": 1,
+      "body": "some comment",
+      "messageId": 1,
+      "author": "typicode"
+    }
   ],
   "users": [
-    { "id": 1, "username": "typicode", "password": "password" }
+    {
+      "id": 1,
+      "username": "typicode",
+      "password": "password"
+    },
+    {
+      "username": "kring121",
+      "password": "password",
+      "id": 2
+    }
   ]
 }

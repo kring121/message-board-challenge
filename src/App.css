@@ -280,9 +280,14 @@ input {
   justify-content: center;
 }
 
-/*Login*/
+/*AUTH*/
 .user-auth-icon {
   font-size: 2rem;
 }
+
+.card-header svg {
+  cursor: pointer;
+}
+
 
 
