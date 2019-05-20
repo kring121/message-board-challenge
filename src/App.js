@@ -3,6 +3,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 
+// Font awesome
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+library.add(faTimes);
+
 // imported components
 import Messages from './components/messages/Messages';
 import Landing from './components/layout/Landing';

@@ -194,6 +194,13 @@ a {
   color: var(--dark-color);
 }
 
+.card {
+  background: var(--light-color);
+  width: 90%;
+  height: 80%;
+  position: absolute;
+}
+
 /*Navbar*/
 .navbar {
   width: 100%;
@@ -222,8 +229,14 @@ a {
 }
 
 .landing-inner {
+  position: relative;
   border-radius: 1rem;
   padding: 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 

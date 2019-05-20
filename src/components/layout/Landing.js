@@ -6,23 +6,20 @@ import SignUp from '../auth/SignUp';
 import { connect } from 'react-redux';
 import { launchSignup, launchLogin } from '../../actions/auth';
 
-const Landing = ({ launchSignup, launchLogin, loginLaunched, signUpLaunched }) => {
-
-  return (
-    <div className='landing text-center'>
-      <div className='landing-inner'>
-        <h1 className='medium mb-2'>Welcome to MessageBoard</h1>
-        {loginLaunched ? <Login/> : null}
-        {signUpLaunched ? <SignUp/> : null}
-        <p className='lead mb-2'>Join an international community of people posting their thoughts</p>
-        <div className='d-flex j-center'>
-          <button className='btn btn-primary' onClick={launchLogin}>Login</button>
-          <button className='btn btn-light' onClick={launchSignup}>Sign Up</button>
-        </div>
+const Landing = ({ launchSignup, launchLogin, loginLaunched, signUpLaunched }) => (
+  <div className='landing text-center'>
+    <div className='landing-inner'>
+      {loginLaunched ? <Login/> : null}
+      {signUpLaunched ? <SignUp/> : null}
+      <h1 className='medium mb-2'>Welcome to MessageBoard</h1>
+      <p className='lead mb-2'>Join an international community of people posting their thoughts</p>
+      <div className='d-flex j-center'>
+        <button className='btn btn-primary' onClick={launchLogin}>Login</button>
+        <button className='btn btn-light' onClick={launchSignup}>Sign Up</button>
       </div>
     </div>
-  )
-};
+  </div>
+);
 
 const mapStateToProps = state => ({
   loginLaunched: state.auth.loginLaunched,
