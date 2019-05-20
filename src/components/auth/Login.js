@@ -24,27 +24,34 @@ const Login = ({ launchSignup, closeAuthModal, login }) => {
 
   return (
     <div className='card'>
+      <div className='card-header'>
+        <FontAwesomeIcon className='mr' onClick={closeAuthModal} icon='times'/>
+      </div>
+      <FontAwesomeIcon className='user-auth-icon' icon='user'/>
       <h1>Login</h1>
-      <FontAwesomeIcon onClick={closeAuthModal} icon='times'/>
-      <p onClick={launchSignup}>Sign Up</p>
       <form onSubmit={e => onSubmit(e)}>
-        <label>Username</label>
-        <input
-          type='text'
-          name='username'
-          required
-          placeholder='Username'
-          onChange={e => onChange(e)}
-        />
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          required
-          placeholder='Password'
-          onChange={e => onChange(e)}
-        />
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <div className='form-group'>
+          <label>Username</label>
+          <input
+            type='text'
+            name='username'
+            required
+            placeholder='Username'
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <div className='form-group'>
+          <label>Password</label>
+          <input
+            type='password'
+            name='password'
+            required
+            placeholder='Password'
+            onChange={e => onChange(e)}
+          />
+        </div>
+        <button type="submit" className="btn btn-block btn-primary">Submit</button>
+        <p className='mt-2 text-center'>Not registered? <a onClick={launchSignup}>Create an account</a></p>
       </form>
     </div>
   )
