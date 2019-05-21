@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR } from './types';
+import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE } from './types';
 
 export const getMessages = () => async dispatch => {
   try {
@@ -28,5 +28,18 @@ export const getMessage = (id) => async dispatch => {
       type: MESSAGE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
+  }
+}
+
+export const addMessage = (title, content, author) => async dispatch => {
+  const body = { title, content, author };
+  try {
+    const res = await axios.post('/api/messages', body);
+    dispatch({
+      type: ADD_MESSAGE,
+      payload: res.data
+    })
+  } catch(err) {
+    console.log(err)
   }
 }

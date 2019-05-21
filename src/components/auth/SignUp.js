@@ -74,7 +74,7 @@ const SignUp = ({ launchLogin, closeAuthModal, signUp, isAuthenticated }) => {
       </form>
     </div>
   );
-}
+};
 
 SignUp.propTypes = {
   launchLogin: PropTypes.func.isRequired,

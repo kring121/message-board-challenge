@@ -1,4 +1,4 @@
-import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR } from '../actions/types';
+import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE } from '../actions/types';
 
 const initialState = {
   messages: [],
@@ -25,6 +25,11 @@ export default function(state = initialState, action) {
         ...state,
         error: payload
       };
+    case ADD_MESSAGE:
+      return {
+        ...state,
+        messages: [...state.messages, payload]
+      }
     default:
       return state;
   }
