@@ -222,8 +222,43 @@ form {
   padding: 1.5rem;
 }
 
+.add-post-form {
+  width: 90%;
+  max-width: 900px;
+  padding: 0;
+  position: relative;
+}
+
+.add-post-form input {
+  font-size: 2rem;
+  padding: 2rem;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid var(--gray-color);
+}
+
+.add-post-form textarea {
+  padding: 2rem;
+  width: 100%;
+  max-width: 900px;
+  overflow: auto;
+  resize: vertical;
+  border: none;
+  font-size: 1.3rem;
+  outline: none;
+  border-bottom: 2px solid var(--gray-color);
+}
+
 .form-group {
   margin-bottom: 1rem;
+}
+
+.post-submit {
+  margin-top: -0.5rem;
+  background: white;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
 }
 
 label {
