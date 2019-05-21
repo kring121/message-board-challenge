@@ -2,8 +2,26 @@
   "messages": [
     {
       "id": 1,
-      "title": "json-server",
-      "content": "This is my first message on here, I would love to hear your thoughts",
+      "title": "Seven Facts That Nobody Told You About Tech",
+      "content": "Mi proin sed libero enim sed. Blandit aliquam etiam erat velit scelerisque. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Amet volutpat consequat mauris nunc congue nisi vitae. Fermentum odio eu feugiat pretium nibh ipsum consequat. Nisl suscipit adipiscing bibendum est. Lobortis elementum nibh tellus molestie nunc non.",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "The Reason Why Everyone Loves Tech",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hac habitasse platea dictumst vestibulum rhoncus. Aliquam etiam erat velit scelerisque in dictum.",
+      "author": "kring121"
+    },
+    {
+      "id": 3,
+      "title": "Never Underestimate The Influence Of Tech",
+      "content": "In egestas erat imperdiet sed euismod nisi porta lorem mollis. Magna etiam tempor orci eu lobortis elementum. Enim diam vulputate ut pharetra sit amet aliquam id diam. Eget velit aliquet sagittis id. Nisi est sit amet facilisis magna etiam. Quis blandit turpis cursus in hac habitasse. Amet volutpat consequat mauris nunc congue nisi vitae suscipit.",
+      "author": "kring121"
+    },
+    {
+      "id": 4,
+      "title": "Lorem Ipsum Magna",
+      "content": "Nisi est sit amet facilisis magna etiam. Quis blandit turpis cursus in hac habitasse. Amet volutpat consequat mauris nunc congue nisi vitae suscipit.",
       "author": "typicode"
     }
   ],

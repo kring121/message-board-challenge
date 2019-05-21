@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 const MessageItem = ({ message }) => {
 
   return (
-    <div className='message'>
+    <div className='message mb-2'>
       <h1 className='text-primary'>{message.title}</h1>
       <div className='user-info'>
         <FontAwesomeIcon className='user-profile-icon mr' icon='user'/>

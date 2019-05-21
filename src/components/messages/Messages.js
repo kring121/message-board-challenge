@@ -12,7 +12,7 @@ const Messages = ({ getMessages, messages }) => {
   }, [getMessages]);
 
   return (
-    <div className='message-feed mt-4'>
+    <div className='message-feed mt-5 mb-3'>
       {messages.map(message => (
           <MessageItem key={message.id} message={message}/>
         ))
