@@ -25,7 +25,8 @@ export const login = (username, password) => async dispatch => {
 
     if(res.data.length !== 0) {
       dispatch({
-        type: LOGIN_SUCCESS
+        type: LOGIN_SUCCESS,
+        payload: username
       });
     } else {
       dispatch({
@@ -48,7 +49,8 @@ export const signUp = (username, password) => async dispatch => {
     if(userExists.data.length === 0) {
       const res = await axios.post('/api/users', body);
       dispatch({
-        type: SIGNUP_SUCCESS
+        type: SIGNUP_SUCCESS,
+        payload: username
       });
     } else {
       dispatch({

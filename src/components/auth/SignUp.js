@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -6,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
 import { launchLogin, closeAuthModal, signUp } from '../../actions/auth';
 
-const SignUp = ({ launchLogin, closeAuthModal, signUp }) => {
+const SignUp = ({ launchLogin, closeAuthModal, signUp, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -24,6 +25,10 @@ const SignUp = ({ launchLogin, closeAuthModal, signUp }) => {
     if(password === confirmPassword) {
       signUp(username, password);
     }
+  }
+
+  if (isAuthenticated) {
+    return <Redirect to='/messages' />;
   }
 
   return (
@@ -77,7 +82,11 @@ SignUp.propTypes = {
   signUp: PropTypes.func.isRequired
 };
 
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { launchLogin, closeAuthModal, signUp }
 )(SignUp);

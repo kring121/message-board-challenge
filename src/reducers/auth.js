@@ -3,11 +3,12 @@ import { LAUNCH_SIGNUP, LAUNCH_LOGIN, CLOSE_AUTH_MODAL, LOGIN_SUCCESS, LOGIN_FAI
 const initialState = {
   signUpLaunched: false,
   loginLaunched: false,
-  isAuthenticated: null
+  isAuthenticated: null,
+  currentUser: null
 }
 
 export default function(state = initialState, action) {
-  const { type } = action;
+  const { type, payload } = action;
 
   switch(type) {
     case LAUNCH_SIGNUP:
@@ -32,7 +33,8 @@ export default function(state = initialState, action) {
     case SIGNUP_SUCCESS:
       return {
         ...state,
-        isAuthenticated: true
+        isAuthenticated: true,
+        currentUser: payload
       };
     case LOGIN_FAIL:
     case SIGNUP_FAIL:
