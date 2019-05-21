@@ -22,7 +22,6 @@ const MessageForm = ({currentUser, addMessage}) => {
     addMessage(title, content, currentUser);
   }
 
-
   return (
     <form className='add-post-form mb-3' onSubmit={e => onSubmit(e)}>
       <div className='form-group'>
