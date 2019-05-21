@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import PropTypes from 'prop-types';
 import MessageItem from './MessageItem';
 
@@ -12,13 +12,12 @@ const Messages = ({ getMessages, messages }) => {
   }, [getMessages]);
 
   return (
-    <Fragment>
-      <h1>Messages</h1>
+    <div className='message-feed mt-4'>
       {messages.map(message => (
           <MessageItem key={message.id} message={message}/>
         ))
       }
-    </Fragment>
+    </div>
   );
 };
 
