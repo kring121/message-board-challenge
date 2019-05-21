@@ -25,7 +25,8 @@ const Messages = ({ getMessages, messages, currentUser }) => {
 
 Messages.propTypes = {
   getMessages: PropTypes.func.isRequired,
-  messages: PropTypes.array.isRequired
+  messages: PropTypes.array.isRequired,
+  // add current user once done with developement
 };
 
 const mapStateToProps = state => ({

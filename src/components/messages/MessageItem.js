@@ -20,7 +20,7 @@ const MessageItem = ({ message }) => {
           <FontAwesomeIcon icon='comment'/>
         </div>
       </div>
-      <CommentForm/>
+      <CommentForm messageId={message.id}/>
     </Fragment>
   );
 };

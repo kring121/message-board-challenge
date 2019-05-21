@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 
-const CommentForm = () => {
+// Redux
+import { connect } from 'react-redux';
+import { addComment } from '../../actions/messages';
+
+const CommentForm = ({ messageId, currentUser, addComment }) => {
   const [formData, setFormData] = useState({
-    comment: ''
+    content: ''
   });
 
-  const { comment } = formData;
+  const { content } = formData;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -13,7 +17,7 @@ const CommentForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(comment)
+    addComment(content, currentUser, messageId);
   }
 
   return (
@@ -21,12 +25,20 @@ const CommentForm = () => {
       <input
         className='mb-2'
         type='text'
-        name='comment'
+        name='content'
         placeholder='Add a comment'
+        required
         onChange={e => onChange(e)}
       />
     </form>
   );
 };
 
-export default CommentForm;
+const mapStateToProps = state => ({
+  currentUser: state.auth.currentUser
+});
+
+export default connect(
+  mapStateToProps,
+  { addComment }
+)(CommentForm);

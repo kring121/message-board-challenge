@@ -34,9 +34,15 @@
   "comments": [
     {
       "id": 1,
-      "body": "some comment",
+      "content": "some comment",
       "messageId": 1,
       "author": "typicode"
+    },
+    {
+      "content": "Wow I literally don't understand a word you just said.",
+      "author": "kring121",
+      "messageId": 1,
+      "id": 2
     }
   ],
   "users": [

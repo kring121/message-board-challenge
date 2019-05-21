@@ -1,8 +1,9 @@
-import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE } from '../actions/types';
+import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, ADD_COMMENT } from '../actions/types';
 
 const initialState = {
   messages: [],
   message: null,
+  comments: [],
   error: {}
 }
 
@@ -29,7 +30,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         messages: [...state.messages, payload]
-      }
+      };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        comments: [...state.comments, payload]
+      };
     default:
       return state;
   }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE } from './types';
+import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, ADD_COMMENT } from './types';
 
 export const getMessages = () => async dispatch => {
   try {
@@ -11,7 +11,7 @@ export const getMessages = () => async dispatch => {
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err, status: err.response.status }
     });
   }
 }
@@ -26,7 +26,7 @@ export const getMessage = (id) => async dispatch => {
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response, status: err.response.status }
     });
   }
 }
@@ -38,8 +38,27 @@ export const addMessage = (title, content, author) => async dispatch => {
     dispatch({
       type: ADD_MESSAGE,
       payload: res.data
+    });
+  } catch(err) {
+    dispatch({
+      type: MESSAGE_ERROR,
+      payload: { msg: err.response, status: err.response.status }
+    });
+  }
+}
+
+export const addComment = (content, author, messageId) => async dispatch => {
+  const body = { content, author, messageId };
+  try {
+    const res = await axios.post('/api/comments', body);
+    dispatch({
+      type: ADD_COMMENT,
+      payload: res.data
     })
   } catch(err) {
-    console.log(err)
+    dispatch({
+      type: MESSAGE_ERROR,
+      payload: { msg: err.response, status: err.response.status }
+    });
   }
 }
