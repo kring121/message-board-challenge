@@ -1,10 +1,12 @@
-import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, GET_COMMENTS, ADD_COMMENT, REMOVE_COMMENT } from '../actions/types';
+import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, GET_COMMENTS, ADD_COMMENT, REMOVE_COMMENT, EDIT_COMMENT, TOGGLE_EDIT_COMMENT } from '../actions/types';
 
 const initialState = {
   messages: [],
   message: null,
   comments: [],
-  error: {}
+  error: {},
+  toggleEditComment: false,
+  editing: null
 }
 
 export default function(state = initialState, action) {
@@ -34,9 +36,6 @@ export default function(state = initialState, action) {
     case ADD_COMMENT:
       return {
         ...state,
-        // messages: state.messages.map(message =>
-        //   message.id === payload.messageId ? {...message, comments: [...message.comments, payload]} : message
-        // )
         comments: [...state.comments, payload]
       };
     case GET_COMMENTS:
@@ -49,6 +48,19 @@ export default function(state = initialState, action) {
         ...state,
         comments: state.comments.filter(comment => comment.id !== payload)
       }
+    case EDIT_COMMENT:
+      return {
+        ...state,
+        comments: state.comments.map(comment =>
+          comment.id === payload.id ? payload : comment
+        )
+      }
+    case TOGGLE_EDIT_COMMENT:
+    return {
+      ...state,
+      toggleEditComment: !state.toggleEditComment,
+      editing: state.editing === null ? payload : null
+    }
     default:
       return state;
   }

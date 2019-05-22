@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 
 // Redux
 import { connect } from 'react-redux';
-import { removeComment } from '../../actions/messages';
+import { removeComment, toggleEditComment } from '../../actions/messages';
 
-const CommentList = ({ comments, currentUser, removeComment }) => (
+const CommentList = ({ comments, currentUser, removeComment, toggleEditComment }) => (
   <div className='comment-list'>
     {comments.map(comment => (
       <Fragment key={`comment-${comment.id}`}>
@@ -15,7 +15,7 @@ const CommentList = ({ comments, currentUser, removeComment }) => (
         { currentUser === comment.author ?
           <div className='comment-options d-flex text-primary'>
             <a className='mr' onClick={() => removeComment(comment.id)}>Delete</a>
-            <a>Edit</a>
+            <a onClick={() => toggleEditComment(comment)}>Edit</a>
           </div>
          : null
         }
@@ -27,5 +27,5 @@ const CommentList = ({ comments, currentUser, removeComment }) => (
 
 export default connect(
   null,
-  { removeComment }
+  { removeComment, toggleEditComment }
 )(CommentList);

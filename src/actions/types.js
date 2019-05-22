@@ -13,3 +13,5 @@ export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 export const GET_COMMENTS = 'GET_COMMENTS';
+export const EDIT_COMMENT = 'EDIT_COMMENT';
+export const TOGGLE_EDIT_COMMENT = 'TOGGLE_EDIT_COMMENT';
