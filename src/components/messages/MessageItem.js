@@ -1,11 +1,16 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import CommentForm from './CommentForm';
+import CommentList from './CommentList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Redux
 import { connect } from 'react-redux';
 
 const MessageItem = ({ message }) => {
+  const [viewComments, setView] = useState(false);
+
+  const toggleView = () => setView(!viewComments);
+
   return (
     <Fragment>
       <div className='message'>
@@ -17,10 +22,13 @@ const MessageItem = ({ message }) => {
         <p className='message-content'>{message.content}</p>
         <div className='d-flex mt-2'>
           <FontAwesomeIcon className='mr-1' icon='thumbs-up'/>
-          <FontAwesomeIcon icon='comment'/>
-          <p className='comment-count'>{message.comments.length}</p>
+          <div className='toggle-comments d-flex' onClick={toggleView}>
+            <FontAwesomeIcon icon='comment'/>
+            <p className='comment-count'>{message.comments.length}</p>
+          </div>
         </div>
       </div>
+      {message.comments.length !== 0 && viewComments ? <CommentList comments={message.comments}/> : null}
       <CommentForm messageId={message.id}/>
     </Fragment>
   );

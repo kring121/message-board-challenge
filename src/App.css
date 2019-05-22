@@ -344,11 +344,6 @@ input {
   font-size: 1.1rem;
 }
 
-.comment-count {
-  margin-left: .25rem;
-  margin-top: -.2rem;
-}
-
 .user-profile-icon {
   font-size: 1.3rem;
 }
@@ -356,6 +351,17 @@ input {
 .user-info {
   display: flex;
   align-items: center;
+}
+
+/*Comments*/
+.comment-count {
+  margin-left: .25rem;
+  margin-top: -.2rem;
+}
+
+.toggle-comments:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .comment-form {
@@ -366,9 +372,24 @@ input {
 
 .comment-form input {
   padding: 1.6rem;
-  /*border-bottom: 1px solid var(--dark-color);*/
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
+.comment-list {
+  background: white;
+  padding-bottom: 1rem;
+  width: 90%;
+  max-width: 900px;
+  border-top: 2px solid var(--gray-color);
+}
+
+.comment-author {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.comment-content {
+  margin-top: .25rem;
+}
 
 
