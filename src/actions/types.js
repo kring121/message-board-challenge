@@ -11,3 +11,5 @@ export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAIL = 'SIGNUP_FAIL';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const ADD_COMMENT = 'ADD_COMMENT';
+export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+export const GET_COMMENTS = 'GET_COMMENTS';

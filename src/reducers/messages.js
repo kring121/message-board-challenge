@@ -1,8 +1,9 @@
-import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, ADD_COMMENT } from '../actions/types';
+import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, GET_COMMENTS, ADD_COMMENT, REMOVE_COMMENT } from '../actions/types';
 
 const initialState = {
   messages: [],
   message: null,
+  comments: [],
   error: {}
 }
 
@@ -31,13 +32,23 @@ export default function(state = initialState, action) {
         messages: [...state.messages, payload]
       };
     case ADD_COMMENT:
-    // because message comments are included with the message object itself
       return {
         ...state,
-        messages: state.messages.map(message =>
-          message.id === payload.messageId ? {...message, comments: [...message.comments, payload]} : message
-        )
+        // messages: state.messages.map(message =>
+        //   message.id === payload.messageId ? {...message, comments: [...message.comments, payload]} : message
+        // )
+        comments: [...state.comments, payload]
       };
+    case GET_COMMENTS:
+      return {
+        ...state,
+        comments: payload
+      }
+    case REMOVE_COMMENT:
+      return {
+        ...state,
+        comments: state.comments.filter(comment => comment.id !== payload)
+      }
     default:
       return state;
   }

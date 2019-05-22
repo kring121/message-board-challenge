@@ -1,15 +1,23 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import CommentForm from './CommentForm';
 import CommentList from './CommentList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Redux
 import { connect } from 'react-redux';
+import { getComments } from '../../actions/messages';
 
-const MessageItem = ({ message }) => {
+const MessageItem = ({ getComments, message, comments, currentUser }) => {
+  useEffect(() => {
+    getComments();
+  }, [getComments]);
+
   const [viewComments, setView] = useState(false);
 
   const toggleView = () => setView(!viewComments);
+
+  const messageComments = comments.filter(comment => comment.messageId === message.id);
 
   return (
     <Fragment>
@@ -24,14 +32,21 @@ const MessageItem = ({ message }) => {
           <FontAwesomeIcon className='mr-1' icon='thumbs-up'/>
           <div className='toggle-comments d-flex' onClick={toggleView}>
             <FontAwesomeIcon icon='comment'/>
-            <p className='comment-count'>{message.comments.length}</p>
+            <p className='comment-count'>{messageComments.length}</p>
           </div>
         </div>
       </div>
-      {message.comments.length !== 0 && viewComments ? <CommentList comments={message.comments}/> : null}
+      {messageComments.length !== 0 && viewComments ? <CommentList comments={messageComments} currentUser={currentUser}/> : null}
       <CommentForm messageId={message.id}/>
     </Fragment>
   );
 };
 
-export default connect()(MessageItem);
+const mapStateToProps = state => ({
+  comments: state.messages.comments
+});
+
+export default connect(
+  mapStateToProps,
+  { getComments }
+)(MessageItem);

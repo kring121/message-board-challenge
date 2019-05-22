@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, ADD_COMMENT } from './types';
+import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, ADD_COMMENT, REMOVE_COMMENT, GET_COMMENTS } from './types';
 
 export const getMessages = () => async dispatch => {
   try {
@@ -53,6 +53,36 @@ export const addComment = (content, author, messageId) => async dispatch => {
     const res = await axios.post('/api/comments', body);
     dispatch({
       type: ADD_COMMENT,
+      payload: res.data
+    })
+  } catch(err) {
+    dispatch({
+      type: MESSAGE_ERROR,
+      payload: { msg: 'Whoops, something went wrong' }
+    });
+  }
+}
+
+export const removeComment = (id) => async dispatch => {
+  try {
+    await axios.delete(`/api/comments/${id}`);
+    dispatch({
+      type: REMOVE_COMMENT,
+      payload: id
+    })
+  } catch(err) {
+    dispatch({
+      type: MESSAGE_ERROR,
+      payload: { msg: 'Whoops, something went wrong' }
+    });
+  }
+}
+
+export const getComments = () => async dispatch => {
+  try {
+    const res = await axios.get('/api/comments');
+    dispatch({
+      type: GET_COMMENTS,
       payload: res.data
     })
   } catch(err) {

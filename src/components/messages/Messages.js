@@ -16,7 +16,7 @@ const Messages = ({ getMessages, messages, currentUser }) => {
     <div className='message-feed mt-5 mb-3'>
       <MessageForm currentUser={currentUser}/>
       {messages.map(message => (
-          <MessageItem key={message.id} message={message}/>
+          <MessageItem key={message.id} message={message} currentUser={currentUser}/>
         ))
       }
     </div>

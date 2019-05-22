@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-const CommentList = ({ comments }) => (
+// Redux
+import { connect } from 'react-redux';
+import { removeComment } from '../../actions/messages';
+
+const CommentList = ({ comments, currentUser, removeComment }) => (
   <div className='comment-list'>
     {comments.map(comment => (
-      <div key={`comment-${comment.id}`} className='d-flex mt'>
-        <p className='comment-author ml-1 mr'>{comment.author}</p>
-        <p className='comment-content mr-1'>{comment.content}</p>
-      </div>
+      <Fragment key={`comment-${comment.id}`}>
+        <div className='d-flex mt'>
+          <p className='comment-author ml-1 mr'>{comment.author}</p>
+          <p className='comment-content mr-1'>{comment.content}</p>
+        </div>
+        { currentUser === comment.author ?
+          <div className='comment-options d-flex text-primary'>
+            <a className='mr' onClick={() => removeComment(comment.id)}>Delete</a>
+            <a>Edit</a>
+          </div>
+         : null
+        }
+      </Fragment>
       )
     )}
   </div>
 );
 
-export default CommentList;
+export default connect(
+  null,
+  { removeComment }
+)(CommentList);
