@@ -344,6 +344,11 @@ input {
   font-size: 1.1rem;
 }
 
+.comment-count {
+  margin-left: .25rem;
+  margin-top: -.2rem;
+}
+
 .user-profile-icon {
   font-size: 1.3rem;
 }

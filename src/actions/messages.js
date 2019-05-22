@@ -11,7 +11,7 @@ export const getMessages = () => async dispatch => {
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
-      payload: { msg: err, status: err.response.status }
+      payload: { msg: 'Whoops, something went wrong' }
     });
   }
 }
@@ -26,7 +26,7 @@ export const getMessage = (id) => async dispatch => {
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
-      payload: { msg: err.response, status: err.response.status }
+      payload: { msg: 'Whoops, something went wrong' }
     });
   }
 }
@@ -42,7 +42,7 @@ export const addMessage = (title, content, author) => async dispatch => {
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
-      payload: { msg: err.response, status: err.response.status }
+      payload: { msg: 'Whoops, something went wrong' }
     });
   }
 }
@@ -58,7 +58,7 @@ export const addComment = (content, author, messageId) => async dispatch => {
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
-      payload: { msg: err.response, status: err.response.status }
+      payload: { msg: 'Whoops, something went wrong' }
     });
   }
 }

@@ -16,8 +16,9 @@ const MessageItem = ({ message }) => {
         </div>
         <p className='message-content'>{message.content}</p>
         <div className='d-flex mt-2'>
-        <FontAwesomeIcon className='mr-1' icon='thumbs-up'/>
+          <FontAwesomeIcon className='mr-1' icon='thumbs-up'/>
           <FontAwesomeIcon icon='comment'/>
+          <p className='comment-count'>{message.comments.length}</p>
         </div>
       </div>
       <CommentForm messageId={message.id}/>

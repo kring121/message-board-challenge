@@ -3,7 +3,6 @@ import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, ADD_COMMENT } fr
 const initialState = {
   messages: [],
   message: null,
-  comments: [],
   error: {}
 }
 
@@ -32,9 +31,12 @@ export default function(state = initialState, action) {
         messages: [...state.messages, payload]
       };
     case ADD_COMMENT:
+    // because message comments are included with the message object itself
       return {
         ...state,
-        comments: [...state.comments, payload]
+        messages: state.messages.map(message =>
+          message.id === payload.messageId ? {...message, comments: [...message.comments, payload]} : message
+        )
       };
     default:
       return state;
