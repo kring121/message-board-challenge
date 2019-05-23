@@ -353,6 +353,10 @@ input {
   align-items: center;
 }
 
+.message-actions {
+  justify-content: space-between;
+}
+
 /*Comments*/
 .comment-count {
   margin-left: .25rem;

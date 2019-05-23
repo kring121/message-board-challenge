@@ -1,4 +1,4 @@
-import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, GET_COMMENTS, ADD_COMMENT, REMOVE_COMMENT, EDIT_COMMENT, TOGGLE_EDIT_COMMENT } from '../actions/types';
+import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, GET_COMMENTS, ADD_COMMENT, REMOVE_COMMENT, EDIT_COMMENT, TOGGLE_EDIT_COMMENT, REMOVE_MESSAGE } from '../actions/types';
 
 const initialState = {
   messages: [],
@@ -60,6 +60,11 @@ export default function(state = initialState, action) {
       ...state,
       toggleEditComment: !state.toggleEditComment,
       editing: state.editing === null ? payload : null
+    }
+    case REMOVE_MESSAGE:
+    return {
+      ...state,
+      messages: state.messages.filter(message => message.id !== payload)
     }
     default:
       return state;

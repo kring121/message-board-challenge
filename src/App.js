@@ -6,8 +6,8 @@ import './App.css';
 // Font awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faUser, faComment, faThumbsUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
-library.add(faTimes, faUser, faComment, faThumbsUp, faCaretDown);
+import { faTimes, faUser, faComment, faThumbsUp, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+library.add(faTimes, faUser, faComment, faThumbsUp, faEdit, faTrashAlt);
 
 // imported components
 import Messages from './components/messages/Messages';

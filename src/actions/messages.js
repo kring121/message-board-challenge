@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, ADD_COMMENT, REMOVE_COMMENT, GET_COMMENTS, EDIT_COMMENT, TOGGLE_EDIT_COMMENT } from './types';
+import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, ADD_COMMENT, REMOVE_COMMENT, GET_COMMENTS, EDIT_COMMENT, TOGGLE_EDIT_COMMENT, REMOVE_MESSAGE } from './types';
 
 export const getMessages = () => async dispatch => {
   try {
@@ -22,7 +22,7 @@ export const getMessage = (id) => async dispatch => {
     dispatch({
       type: GET_MESSAGE,
       payload: res.data
-    })
+    });
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
@@ -54,7 +54,7 @@ export const addComment = (content, author, messageId) => async dispatch => {
     dispatch({
       type: ADD_COMMENT,
       payload: res.data
-    })
+    });
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
@@ -69,7 +69,7 @@ export const removeComment = (id) => async dispatch => {
     dispatch({
       type: REMOVE_COMMENT,
       payload: id
-    })
+    });
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
@@ -84,7 +84,7 @@ export const getComments = () => async dispatch => {
     dispatch({
       type: GET_COMMENTS,
       payload: res.data
-    })
+    });
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
@@ -117,5 +117,20 @@ export const toggleEditComment = (payload) => dispatch => {
   dispatch({
     type: TOGGLE_EDIT_COMMENT,
     payload: payload
-  })
+  });
+}
+
+export const removeMessage = (id) => async dispatch => {
+  try {
+    await axios.delete(`/api/messages/${id}`);
+    dispatch({
+      type: REMOVE_MESSAGE,
+      payload: id
+    });
+  } catch(err) {
+    dispatch({
+      type: MESSAGE_ERROR,
+      payload: { msg: 'Whoops, something went wrong' }
+    });
+  }
 }
