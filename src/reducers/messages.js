@@ -33,7 +33,8 @@ export default function(state = initialState, action) {
     case ADD_MESSAGE:
       return {
         ...state,
-        messages: [...state.messages, payload]
+        // payload in front so we get desc order
+        messages: [payload, ...state.messages]
       };
     case ADD_COMMENT:
       return {

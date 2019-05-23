@@ -18,6 +18,7 @@ const CommentForm = ({ messageId, currentUser, addComment }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     addComment(content, currentUser, messageId);
+    e.target.reset();
   }
 
   return (

@@ -1,43 +1,33 @@
 {
   "messages": [
     {
-      "id": 1,
-      "title": "Seven Facts That Nobody Told You About Tech",
-      "content": "Mi proin sed libero enim sed. Blandit aliquam etiam erat velit scelerisque. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Amet volutpat consequat mauris nunc congue nisi vitae. Fermentum odio eu feugiat pretium nibh ipsum consequat. Nisl suscipit adipiscing bibendum est. Lobortis elementum nibh tellus molestie nunc non.",
-      "author": "typicode"
+      "title": "Ut Enim Ad Minim Veniam",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "author": "typicode",
+      "date": 1558639464686,
+      "id": 1
     },
     {
-      "title": "The Reason Why Everyone Loves Tech",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hac habitasse platea dictumst vestibulum rhoncus. Aliquam etiam erat velit scelerisque in dictum.",
+      "title": "Storytel is the coolest",
+      "content": "At Storytel you can choose from over 120,000 audio books and e-books from SEK 169 / month. Listen and read anytime and anywhere.",
       "author": "kring121",
+      "date": 1558639867794,
       "id": 2
-    },
-    {
-      "id": 3,
-      "title": "Never Underestimate The Influence Of Tech",
-      "content": "In egestas erat imperdiet sed euismod nisi porta lorem mollis. Magna etiam tempor orci eu lobortis elementum. Enim diam vulputate ut pharetra sit amet aliquam id diam. Eget velit aliquet sagittis id. Nisi est sit amet facilisis magna etiam. Quis blandit turpis cursus in hac habitasse. Amet volutpat consequat mauris nunc congue nisi vitae suscipit.",
-      "author": "kring121"
-    },
-    {
-      "id": 4,
-      "title": "Lorem Ipsum Magna",
-      "content": "Nisi est sit amet facilisis magna etiam. Quis blandit turpis cursus in hac habitasse. Amet volutpat consequat mauris nunc congue nisi vitae suscipit.",
-      "author": "typicode"
     }
   ],
   "comments": [
     {
-      "id": 1,
-      "content": "some comment",
+      "content": "Jag pratar inte Lorem ipsum så jag förstår inte",
+      "author": "kring121",
       "messageId": 1,
-      "author": "typicode"
+      "id": 1
     }
   ],
   "likes": [
     {
-      "id": 1,
       "messageId": 1,
-      "author": "kring121"
+      "author": "kring121",
+      "id": 1
     }
   ],
   "users": [

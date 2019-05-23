@@ -4,6 +4,7 @@ import CommentForm from './CommentForm';
 import CommentList from './CommentList';
 import MessageOptions from './MessageOptions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Moment from 'react-moment';
 
 // Redux
 import { connect } from 'react-redux';
@@ -36,6 +37,7 @@ const MessageItem = ({ getComments, getLikes, message, comments, likes, currentU
         <div className='user-info'>
           <FontAwesomeIcon className='user-profile-icon mr' icon='user'/>
           <h3 className='mt'>{message.author}</h3>
+          <Moment fromNow className='mt ml'>{message.date}</Moment>
         </div>
         <p className='message-content'>{message.content}</p>
         <div className='d-flex mt-2 message-actions'>

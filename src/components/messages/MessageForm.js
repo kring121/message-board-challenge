@@ -20,6 +20,7 @@ const MessageForm = ({currentUser, addMessage}) => {
   const onSubmit = (e) => {
     e.preventDefault();
     addMessage(title, content, currentUser);
+    e.target.reset()
   }
 
   return (

@@ -3,7 +3,7 @@ import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, ADD_COMMENT, REM
 
 export const getMessages = () => async dispatch => {
   try {
-    const res = await axios.get('/api/messages');
+    const res = await axios.get('/api/messages?_sort=id&_order=desc');
     dispatch({
       type: GET_MESSAGES,
       payload: res.data
@@ -32,7 +32,8 @@ export const getMessage = (id) => async dispatch => {
 }
 
 export const addMessage = (title, content, author) => async dispatch => {
-  const body = { title, content, author };
+  const date = Date.now();
+  const body = { title, content, author, date };
   try {
     const res = await axios.post('/api/messages', body);
     dispatch({
