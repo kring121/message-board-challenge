@@ -396,4 +396,9 @@ input {
   margin-left: 6.2rem;
 }
 
+.comment-edit {
+  padding: 0;
+  width: 90%;
+}
+
 

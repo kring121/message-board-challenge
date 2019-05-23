@@ -96,9 +96,13 @@ export const getComments = () => async dispatch => {
 export const editComment = (id, content, author, messageId) => async dispatch => {
   const body = { content, author, messageId };
   try {
-    const res = await axios.put(`/api/comments/${id}`);
+    const res = await axios.put(`/api/comments/${id}`, body);
     dispatch({
       type: EDIT_COMMENT,
+      payload: res.data
+    });
+    dispatch({
+      type: TOGGLE_EDIT_COMMENT,
       payload: res.data
     })
   } catch(err) {
