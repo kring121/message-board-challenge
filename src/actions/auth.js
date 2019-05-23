@@ -1,5 +1,13 @@
 import axios from 'axios';
-import { LAUNCH_SIGNUP, LAUNCH_LOGIN, CLOSE_AUTH_MODAL, LOGIN_SUCCESS, LOGIN_FAIL, SIGNUP_SUCCESS, SIGNUP_FAIL } from './types';
+import {
+  LAUNCH_SIGNUP,
+  LAUNCH_LOGIN,
+  CLOSE_AUTH_MODAL,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAIL
+} from './types';
 
 export const launchSignup = () => dispatch => {
   dispatch({
@@ -55,7 +63,7 @@ export const signUp = (username, password) => async dispatch => {
     } else {
       dispatch({
         type: SIGNUP_FAIL
-      })
+      });
     }
   } catch(err) {
     dispatch({

@@ -1,4 +1,20 @@
-import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, GET_COMMENTS, ADD_COMMENT, REMOVE_COMMENT, EDIT_COMMENT, TOGGLE_EDIT_COMMENT, REMOVE_MESSAGE, TOGGLE_EDIT_MESSAGE, EDIT_MESSAGE, ADD_LIKE, REMOVE_LIKE, GET_LIKES } from '../actions/types';
+import {
+  GET_MESSAGES,
+  GET_MESSAGE,
+  MESSAGE_ERROR,
+  ADD_MESSAGE,
+  TOGGLE_EDIT_MESSAGE,
+  EDIT_MESSAGE,
+  REMOVE_MESSAGE,
+  GET_COMMENTS,
+  ADD_COMMENT,
+  TOGGLE_EDIT_COMMENT,
+  EDIT_COMMENT,
+  REMOVE_COMMENT,
+  GET_LIKES,
+  ADD_LIKE,
+  REMOVE_LIKE
+} from '../actions/types';
 
 const initialState = {
   messages: [],
@@ -36,27 +52,12 @@ export default function(state = initialState, action) {
         // payload in front so we get desc order
         messages: [payload, ...state.messages]
       };
-    case ADD_COMMENT:
+    case TOGGLE_EDIT_MESSAGE:
       return {
         ...state,
-        comments: [...state.comments, payload]
-      };
-    case GET_COMMENTS:
-      return {
-        ...state,
-        comments: payload
-      };
-    case REMOVE_COMMENT:
-      return {
-        ...state,
-        comments: state.comments.filter(comment => comment.id !== payload)
-      };
-    case EDIT_COMMENT:
-      return {
-        ...state,
-        comments: state.comments.map(comment =>
-          comment.id === payload.id ? payload : comment
-        )
+        toggleEditComment: false,
+        toggleEditMessage: !state.toggleEditMessage,
+        editing: payload
       };
     case EDIT_MESSAGE:
       return {
@@ -65,25 +66,45 @@ export default function(state = initialState, action) {
           message.id === payload.id ? payload : message
         )
       };
-    case TOGGLE_EDIT_COMMENT:
-      return {
-        ...state,
-        toggleEditMessage: false,
-        toggleEditComment: !state.toggleEditComment,
-        editing: state.editing === null ? payload : null
-      };
-    case TOGGLE_EDIT_MESSAGE:
-      return {
-        ...state,
-        toggleEditComment: false,
-        toggleEditMessage: !state.toggleEditMessage,
-        editing: state.editing === null ? payload : null
-      };
     case REMOVE_MESSAGE:
       return {
         ...state,
         messages: state.messages.filter(message => message.id !== payload)
       };
+    case GET_COMMENTS:
+      return {
+        ...state,
+        comments: payload
+      };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        comments: [...state.comments, payload]
+      };
+    case TOGGLE_EDIT_COMMENT:
+      return {
+        ...state,
+        toggleEditMessage: false,
+        toggleEditComment: !state.toggleEditComment,
+        editing: payload
+      };
+    case EDIT_COMMENT:
+      return {
+        ...state,
+        comments: state.comments.map(comment =>
+          comment.id === payload.id ? payload : comment
+        )
+      };
+    case REMOVE_COMMENT:
+      return {
+        ...state,
+        comments: state.comments.filter(comment => comment.id !== payload)
+      };
+    case GET_LIKES:
+      return {
+        ...state,
+        likes: payload
+      }
     case ADD_LIKE:
       return {
         ...state,
@@ -94,11 +115,6 @@ export default function(state = initialState, action) {
         ...state,
         likes: state.likes.filter(like => like.id !== payload)
       };
-    case GET_LIKES:
-      return {
-        ...state,
-        likes: payload
-      }
     default:
       return state;
   }

@@ -8,7 +8,7 @@ import EditMessage from './EditMessage';
 import { connect } from 'react-redux';
 import { getMessages } from '../../actions/messages';
 
-const Messages = ({ getMessages, messages, currentUser, editing }) => {
+const Messages = ({ getMessages, messages, currentUser, editing, toggleEditMessage }) => {
   useEffect(() => {
     getMessages();
   }, [getMessages]);
@@ -17,7 +17,7 @@ const Messages = ({ getMessages, messages, currentUser, editing }) => {
     <div className='message-feed mt-5 mb-3'>
       <MessageForm currentUser={currentUser}/>
       {messages.map(message => (
-          editing !== null && message.id === editing.id ? <EditMessage key={message.id} message={message}/> : <MessageItem key={message.id} message={message} currentUser={currentUser}/>
+          toggleEditMessage === true && message.id === editing.id ? <EditMessage key={message.id} message={message}/> : <MessageItem key={message.id} message={message} currentUser={currentUser}/>
         ))
       }
     </div>
@@ -27,13 +27,14 @@ const Messages = ({ getMessages, messages, currentUser, editing }) => {
 Messages.propTypes = {
   getMessages: PropTypes.func.isRequired,
   messages: PropTypes.array.isRequired,
-  // add current user once done with developement
+  toggleEditMessage: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
   messages: state.messages.messages,
   currentUser: state.auth.currentUser,
-  editing: state.messages.editing
+  editing: state.messages.editing,
+  toggleEditMessage: state.messages.toggleEditMessage
 });
 
 export default connect(

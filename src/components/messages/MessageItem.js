@@ -62,6 +62,13 @@ const MessageItem = ({ getComments, getLikes, message, comments, likes, currentU
   );
 };
 
+MessageItem.propTypes = {
+  getComments: PropTypes.func.isRequired,
+  getLikes: PropTypes.func.isRequired,
+  addLike: PropTypes.func.isRequired,
+  removeLike: PropTypes.func.isRequired
+}
+
 const mapStateToProps = state => ({
   comments: state.messages.comments,
   likes: state.messages.likes

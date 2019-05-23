@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import PropTypes from 'prop-types';
 
 // Redux
 import { connect } from 'react-redux';
@@ -37,6 +38,11 @@ const EditComment = ({comment, editComment, toggleEditComment}) => {
     </Fragment>
   )
 };
+
+EditComment.propTypes = {
+  editComment: PropTypes.func.isRequired,
+  toggleEditComment: PropTypes.func.isRequired
+}
 
 export default connect(
   null,

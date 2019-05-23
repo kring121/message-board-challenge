@@ -1,5 +1,21 @@
 import axios from 'axios';
-import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, ADD_COMMENT, REMOVE_COMMENT, GET_COMMENTS, EDIT_COMMENT, TOGGLE_EDIT_COMMENT, REMOVE_MESSAGE, TOGGLE_EDIT_MESSAGE, EDIT_MESSAGE, ADD_LIKE, REMOVE_LIKE, GET_LIKES } from './types';
+import {
+  GET_MESSAGES,
+  GET_MESSAGE,
+  MESSAGE_ERROR,
+  ADD_MESSAGE,
+  TOGGLE_EDIT_MESSAGE,
+  EDIT_MESSAGE,
+  REMOVE_MESSAGE,
+  GET_COMMENTS,
+  ADD_COMMENT,
+  TOGGLE_EDIT_COMMENT,
+  EDIT_COMMENT,
+  REMOVE_COMMENT,
+  GET_LIKES,
+  ADD_LIKE,
+  REMOVE_LIKE
+} from './types';
 
 export const getMessages = () => async dispatch => {
   try {
@@ -48,14 +64,25 @@ export const addMessage = (title, content, author) => async dispatch => {
   }
 }
 
-export const addComment = (content, author, messageId) => async dispatch => {
-  const body = { content, author, messageId };
+export const toggleEditMessage = (payload) => dispatch => {
+  dispatch({
+    type: TOGGLE_EDIT_MESSAGE,
+    payload: payload
+  })
+}
+
+export const editMessage = (id, title, content, author) => async dispatch => {
+  const body = { title, content, author };
   try {
-    const res = await axios.post('/api/comments', body);
+    const res = await axios.put(`/api/messages/${id}`, body);
     dispatch({
-      type: ADD_COMMENT,
+      type: EDIT_MESSAGE,
       payload: res.data
     });
+    dispatch({
+      type: TOGGLE_EDIT_MESSAGE,
+      payload: res.data
+    })
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
@@ -64,11 +91,11 @@ export const addComment = (content, author, messageId) => async dispatch => {
   }
 }
 
-export const removeComment = (id) => async dispatch => {
+export const removeMessage = (id) => async dispatch => {
   try {
-    await axios.delete(`/api/comments/${id}`);
+    await axios.delete(`/api/messages/${id}`);
     dispatch({
-      type: REMOVE_COMMENT,
+      type: REMOVE_MESSAGE,
       payload: id
     });
   } catch(err) {
@@ -94,6 +121,29 @@ export const getComments = () => async dispatch => {
   }
 }
 
+export const addComment = (content, author, messageId) => async dispatch => {
+  const body = { content, author, messageId };
+  try {
+    const res = await axios.post('/api/comments', body);
+    dispatch({
+      type: ADD_COMMENT,
+      payload: res.data
+    });
+  } catch(err) {
+    dispatch({
+      type: MESSAGE_ERROR,
+      payload: { msg: 'Whoops, something went wrong' }
+    });
+  }
+}
+
+export const toggleEditComment = (payload) => dispatch => {
+  dispatch({
+    type: TOGGLE_EDIT_COMMENT,
+    payload: payload
+  });
+}
+
 export const editComment = (id, content, author, messageId) => async dispatch => {
   const body = { content, author, messageId };
   try {
@@ -114,18 +164,13 @@ export const editComment = (id, content, author, messageId) => async dispatch =>
   }
 }
 
-export const editMessage = (id, title, content, author) => async dispatch => {
-  const body = { title, content, author };
+export const removeComment = (id) => async dispatch => {
   try {
-    const res = await axios.put(`/api/messages/${id}`, body);
+    await axios.delete(`/api/comments/${id}`);
     dispatch({
-      type: EDIT_MESSAGE,
-      payload: res.data
+      type: REMOVE_COMMENT,
+      payload: id
     });
-    dispatch({
-      type: TOGGLE_EDIT_MESSAGE,
-      payload: res.data
-    })
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
@@ -134,26 +179,12 @@ export const editMessage = (id, title, content, author) => async dispatch => {
   }
 }
 
-export const toggleEditComment = (payload) => dispatch => {
-  dispatch({
-    type: TOGGLE_EDIT_COMMENT,
-    payload: payload
-  });
-}
-
-export const toggleEditMessage = (payload) => dispatch => {
-  dispatch({
-    type: TOGGLE_EDIT_MESSAGE,
-    payload: payload
-  })
-}
-
-export const removeMessage = (id) => async dispatch => {
+export const getLikes = () => async dispatch => {
   try {
-    await axios.delete(`/api/messages/${id}`);
+    const res = await axios.get('/api/likes');
     dispatch({
-      type: REMOVE_MESSAGE,
-      payload: id
+      type: GET_LIKES,
+      payload: res.data
     });
   } catch(err) {
     dispatch({
@@ -185,21 +216,6 @@ export const removeLike = (id) => async dispatch => {
     dispatch({
       type: REMOVE_LIKE,
       payload: id
-    });
-  } catch(err) {
-    dispatch({
-      type: MESSAGE_ERROR,
-      payload: { msg: 'Whoops, something went wrong' }
-    });
-  }
-}
-
-export const getLikes = () => async dispatch => {
-  try {
-    const res = await axios.get('/api/likes');
-    dispatch({
-      type: GET_LIKES,
-      payload: res.data
     });
   } catch(err) {
     dispatch({

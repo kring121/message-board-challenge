@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 // Redux
 import { connect } from 'react-redux';
@@ -38,6 +39,11 @@ const CommentForm = ({ messageId, currentUser, addComment }) => {
 const mapStateToProps = state => ({
   currentUser: state.auth.currentUser
 });
+
+CommentForm.propTypes = {
+  currentUser: PropTypes.string.isRequired,
+  addComment: PropTypes.func.isRequired
+}
 
 export default connect(
   mapStateToProps,

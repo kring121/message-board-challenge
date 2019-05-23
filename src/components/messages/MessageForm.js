@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Redux
@@ -20,7 +21,7 @@ const MessageForm = ({currentUser, addMessage}) => {
   const onSubmit = (e) => {
     e.preventDefault();
     addMessage(title, content, currentUser);
-    e.target.reset()
+    e.target.reset();
   }
 
   return (
@@ -46,6 +47,10 @@ const MessageForm = ({currentUser, addMessage}) => {
     </form>
   );
 };
+
+MessageForm.propTypes = {
+  addMessage: PropTypes.func.isRequired
+}
 
 export default connect(
   null,

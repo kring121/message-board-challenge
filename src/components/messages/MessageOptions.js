@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Redux
@@ -12,6 +13,11 @@ const MessageOptions = ({ message, removeMessage, toggleEditMessage }) => (
     <FontAwesomeIcon onClick={() => removeMessage(message.id)} icon='trash-alt'/>
   </div>
 );
+
+MessageOptions.propTypes = {
+  removeMessage: PropTypes.func.isRequired,
+  toggleEditMessage: PropTypes.func.isRequired
+}
 
 export default connect(
   null,

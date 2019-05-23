@@ -1,4 +1,12 @@
-import { LAUNCH_SIGNUP, LAUNCH_LOGIN, CLOSE_AUTH_MODAL, LOGIN_SUCCESS, LOGIN_FAIL, SIGNUP_SUCCESS, SIGNUP_FAIL } from '../actions/types';
+import {
+  LAUNCH_SIGNUP,
+  LAUNCH_LOGIN,
+  CLOSE_AUTH_MODAL,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAIL
+} from '../actions/types';
 
 const initialState = {
   signUpLaunched: false,
