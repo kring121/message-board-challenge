@@ -6,7 +6,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   SIGNUP_SUCCESS,
-  SIGNUP_FAIL
+  SIGNUP_FAIL,
+  LOGOUT
 } from './types';
 
 export const launchSignup = () => dispatch => {
@@ -70,4 +71,10 @@ export const signUp = (username, password) => async dispatch => {
       type: SIGNUP_FAIL
     });
   }
+}
+
+export const logout = () => dispatch => {
+  dispatch({
+    type: LOGOUT
+  });
 }

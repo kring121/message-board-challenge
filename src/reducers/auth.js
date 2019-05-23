@@ -5,7 +5,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   SIGNUP_SUCCESS,
-  SIGNUP_FAIL
+  SIGNUP_FAIL,
+  LOGOUT
 } from '../actions/types';
 
 const initialState = {
@@ -49,6 +50,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isAuthenticated: false
+      }
+    case LOGOUT:
+      return {
+        ...state,
+        isAuthenticated: null,
+        currentUser: null
       }
     default:
       return state;

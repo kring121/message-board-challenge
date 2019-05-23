@@ -18,7 +18,7 @@ const CommentList = ({ comments, currentUser, editing, toggleEditComment }) => (
 );
 
 CommentList.propTypes = {
-  toggleEditComment: PropTypes.func.isRequired
+  toggleEditComment: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = state => ({

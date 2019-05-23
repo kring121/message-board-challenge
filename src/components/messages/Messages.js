@@ -1,4 +1,5 @@
 import React, { useEffect} from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import MessageItem from './MessageItem';
 import MessageForm from './MessageForm';
@@ -8,10 +9,14 @@ import EditMessage from './EditMessage';
 import { connect } from 'react-redux';
 import { getMessages } from '../../actions/messages';
 
-const Messages = ({ getMessages, messages, currentUser, editing, toggleEditMessage }) => {
+const Messages = ({ getMessages, messages, currentUser, isAuthenticated, editing, toggleEditMessage }) => {
   useEffect(() => {
     getMessages();
   }, [getMessages]);
+
+  if (!isAuthenticated) {
+    return <Redirect to='/' />;
+  }
 
   return (
     <div className='message-feed mt-5 mb-3'>
@@ -33,6 +38,7 @@ Messages.propTypes = {
 const mapStateToProps = state => ({
   messages: state.messages.messages,
   currentUser: state.auth.currentUser,
+  isAuthenticated: state.auth.isAuthenticated,
   editing: state.messages.editing,
   toggleEditMessage: state.messages.toggleEditMessage
 });
