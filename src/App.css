@@ -55,6 +55,10 @@ a:hover {
   margin-bottom: 1rem;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .text-center {
   text-align: center;
 }
@@ -237,7 +241,7 @@ form {
   border-bottom: 2px solid var(--gray-color);
 }
 
-.add-post-form textarea {
+textarea {
   padding: 2rem;
   width: 100%;
   max-width: 900px;
@@ -355,6 +359,10 @@ input {
 
 .message-actions {
   justify-content: space-between;
+}
+
+.edit-btn-group {
+  justify-content: flex-end;
 }
 
 /*Comments*/

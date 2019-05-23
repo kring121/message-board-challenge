@@ -23,7 +23,7 @@ const EditComment = ({comment, editComment, toggleEditComment}) => {
   return (
     <Fragment>
       <div className='d-flex mt'>
-        <p className='comment-author ml-1 mr'>{comment.author}</p>
+        <p className='comment-author ml-1 mr'>{author}</p>
         <form className='comment-edit' onSubmit={e => onSubmit(e)}>
           <input
           type='text'

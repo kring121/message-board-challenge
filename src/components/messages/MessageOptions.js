@@ -3,17 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Redux
 import { connect } from 'react-redux';
-import { removeMessage } from '../../actions/messages';
+import { removeMessage, toggleEditMessage } from '../../actions/messages';
 
 
-const MessageOptions = ({ message, removeMessage }) => (
+const MessageOptions = ({ message, removeMessage, toggleEditMessage }) => (
   <div className='d-flex'>
-    <FontAwesomeIcon className='mr-1' icon='edit'/>
+    <FontAwesomeIcon onClick={() => toggleEditMessage(message)} className='mr-1' icon='edit'/>
     <FontAwesomeIcon onClick={() => removeMessage(message.id)} icon='trash-alt'/>
   </div>
 );
 
 export default connect(
   null,
-  { removeMessage }
+  { removeMessage, toggleEditMessage }
 )(MessageOptions);

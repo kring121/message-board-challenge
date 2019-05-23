@@ -2,12 +2,13 @@ import React, { useEffect} from 'react';
 import PropTypes from 'prop-types';
 import MessageItem from './MessageItem';
 import MessageForm from './MessageForm';
+import EditMessage from './EditMessage';
 
 // Redux
 import { connect } from 'react-redux';
 import { getMessages } from '../../actions/messages';
 
-const Messages = ({ getMessages, messages, currentUser }) => {
+const Messages = ({ getMessages, messages, currentUser, editing }) => {
   useEffect(() => {
     getMessages();
   }, [getMessages]);
@@ -16,7 +17,7 @@ const Messages = ({ getMessages, messages, currentUser }) => {
     <div className='message-feed mt-5 mb-3'>
       <MessageForm currentUser={currentUser}/>
       {messages.map(message => (
-          <MessageItem key={message.id} message={message} currentUser={currentUser}/>
+          editing !== null && message.id === editing.id ? <EditMessage key={message.id} message={message}/> : <MessageItem key={message.id} message={message} currentUser={currentUser}/>
         ))
       }
     </div>
@@ -31,7 +32,8 @@ Messages.propTypes = {
 
 const mapStateToProps = state => ({
   messages: state.messages.messages,
-  currentUser: state.auth.currentUser
+  currentUser: state.auth.currentUser,
+  editing: state.messages.editing
 });
 
 export default connect(

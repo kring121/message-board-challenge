@@ -7,10 +7,10 @@
       "author": "typicode"
     },
     {
-      "id": 2,
       "title": "The Reason Why Everyone Loves Tech",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hac habitasse platea dictumst vestibulum rhoncus. Aliquam etiam erat velit scelerisque in dictum.",
-      "author": "kring121"
+      "content": "Borem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hac habitasse platea dictumst vestibulum rhoncus. Aliquam etiam erat velit scelerisque in dictum.",
+      "author": "kring121",
+      "id": 2
     },
     {
       "id": 3,

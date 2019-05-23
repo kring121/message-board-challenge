@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, ADD_COMMENT, REMOVE_COMMENT, GET_COMMENTS, EDIT_COMMENT, TOGGLE_EDIT_COMMENT, REMOVE_MESSAGE } from './types';
+import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, ADD_COMMENT, REMOVE_COMMENT, GET_COMMENTS, EDIT_COMMENT, TOGGLE_EDIT_COMMENT, REMOVE_MESSAGE, TOGGLE_EDIT_MESSAGE, EDIT_MESSAGE } from './types';
 
 export const getMessages = () => async dispatch => {
   try {
@@ -113,11 +113,38 @@ export const editComment = (id, content, author, messageId) => async dispatch =>
   }
 }
 
+export const editMessage = (id, title, content, author) => async dispatch => {
+  const body = { title, content, author };
+  try {
+    const res = await axios.put(`/api/messages/${id}`, body);
+    dispatch({
+      type: EDIT_MESSAGE,
+      payload: res.data
+    });
+    dispatch({
+      type: TOGGLE_EDIT_MESSAGE,
+      payload: res.data
+    })
+  } catch(err) {
+    dispatch({
+      type: MESSAGE_ERROR,
+      payload: { msg: 'Whoops, something went wrong' }
+    });
+  }
+}
+
 export const toggleEditComment = (payload) => dispatch => {
   dispatch({
     type: TOGGLE_EDIT_COMMENT,
     payload: payload
   });
+}
+
+export const toggleEditMessage = (payload) => dispatch => {
+  dispatch({
+    type: TOGGLE_EDIT_MESSAGE,
+    payload: payload
+  })
 }
 
 export const removeMessage = (id) => async dispatch => {

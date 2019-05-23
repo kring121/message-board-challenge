@@ -1,4 +1,4 @@
-import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, GET_COMMENTS, ADD_COMMENT, REMOVE_COMMENT, EDIT_COMMENT, TOGGLE_EDIT_COMMENT, REMOVE_MESSAGE } from '../actions/types';
+import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, GET_COMMENTS, ADD_COMMENT, REMOVE_COMMENT, EDIT_COMMENT, TOGGLE_EDIT_COMMENT, REMOVE_MESSAGE, TOGGLE_EDIT_MESSAGE, EDIT_MESSAGE } from '../actions/types';
 
 const initialState = {
   messages: [],
@@ -6,6 +6,7 @@ const initialState = {
   comments: [],
   error: {},
   toggleEditComment: false,
+  toggleEditMessage: false,
   editing: null
 }
 
@@ -55,10 +56,25 @@ export default function(state = initialState, action) {
           comment.id === payload.id ? payload : comment
         )
       }
+    case EDIT_MESSAGE:
+      return {
+        ...state,
+        messages: state.messages.map(message =>
+          message.id === payload.id ? payload : message
+        )
+      }
     case TOGGLE_EDIT_COMMENT:
     return {
       ...state,
+      toggleEditMessage: false,
       toggleEditComment: !state.toggleEditComment,
+      editing: state.editing === null ? payload : null
+    }
+    case TOGGLE_EDIT_MESSAGE:
+    return {
+      ...state,
+      toggleEditComment: false,
+      toggleEditMessage: !state.toggleEditMessage,
       editing: state.editing === null ? payload : null
     }
     case REMOVE_MESSAGE:
