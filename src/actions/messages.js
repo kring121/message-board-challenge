@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, ADD_COMMENT, REMOVE_COMMENT, GET_COMMENTS, EDIT_COMMENT, TOGGLE_EDIT_COMMENT, REMOVE_MESSAGE, TOGGLE_EDIT_MESSAGE, EDIT_MESSAGE } from './types';
+import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, ADD_COMMENT, REMOVE_COMMENT, GET_COMMENTS, EDIT_COMMENT, TOGGLE_EDIT_COMMENT, REMOVE_MESSAGE, TOGGLE_EDIT_MESSAGE, EDIT_MESSAGE, ADD_LIKE, REMOVE_LIKE, GET_LIKES } from './types';
 
 export const getMessages = () => async dispatch => {
   try {
@@ -153,6 +153,52 @@ export const removeMessage = (id) => async dispatch => {
     dispatch({
       type: REMOVE_MESSAGE,
       payload: id
+    });
+  } catch(err) {
+    dispatch({
+      type: MESSAGE_ERROR,
+      payload: { msg: 'Whoops, something went wrong' }
+    });
+  }
+}
+
+export const addLike = (messageId, author) => async dispatch => {
+  const body = { messageId, author };
+  try {
+    const res = await axios.post('/api/likes', body);
+    dispatch({
+      type: ADD_LIKE,
+      payload: res.data
+    })
+  } catch(err) {
+    dispatch({
+      type: MESSAGE_ERROR,
+      payload: { msg: 'Whoops, something went wrong' }
+    });
+  }
+}
+
+export const removeLike = (id) => async dispatch => {
+  try {
+    await axios.delete(`/api/likes/${id}`);
+    dispatch({
+      type: REMOVE_LIKE,
+      payload: id
+    });
+  } catch(err) {
+    dispatch({
+      type: MESSAGE_ERROR,
+      payload: { msg: 'Whoops, something went wrong' }
+    });
+  }
+}
+
+export const getLikes = () => async dispatch => {
+  try {
+    const res = await axios.get('/api/likes');
+    dispatch({
+      type: GET_LIKES,
+      payload: res.data
     });
   } catch(err) {
     dispatch({

@@ -8,7 +8,7 @@
     },
     {
       "title": "The Reason Why Everyone Loves Tech",
-      "content": "Borem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hac habitasse platea dictumst vestibulum rhoncus. Aliquam etiam erat velit scelerisque in dictum.",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hac habitasse platea dictumst vestibulum rhoncus. Aliquam etiam erat velit scelerisque in dictum.",
       "author": "kring121",
       "id": 2
     },
@@ -31,6 +31,13 @@
       "content": "some comment",
       "messageId": 1,
       "author": "typicode"
+    }
+  ],
+  "likes": [
+    {
+      "id": 1,
+      "messageId": 1,
+      "author": "kring121"
     }
   ],
   "users": [

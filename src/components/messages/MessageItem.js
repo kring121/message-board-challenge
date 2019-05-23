@@ -7,11 +7,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Redux
 import { connect } from 'react-redux';
-import { getComments } from '../../actions/messages';
+import { getComments, getLikes, addLike, removeLike } from '../../actions/messages';
 
-const MessageItem = ({ getComments, message, comments, currentUser }) => {
+const MessageItem = ({ getComments, getLikes, message, comments, likes, currentUser, addLike, removeLike }) => {
   useEffect(() => {
     getComments();
+    getLikes();
   }, [getComments]);
 
   const [viewComments, setView] = useState(false);
@@ -21,6 +22,12 @@ const MessageItem = ({ getComments, message, comments, currentUser }) => {
   const toggleOptionsView = () => setView(!optionsView);
 
   const messageComments = comments.filter(comment => comment.messageId === message.id);
+  const messageLikes = likes.filter(like => like.messageId === message.id);
+  const hasLiked = messageLikes.filter(like => like.author === currentUser);
+
+  const likeOrUnlike = (messageId) => {
+    hasLiked.length > 0 ? removeLike(hasLiked[0].id) : addLike(messageId, currentUser)
+  }
 
   return (
     <Fragment>
@@ -33,7 +40,10 @@ const MessageItem = ({ getComments, message, comments, currentUser }) => {
         <p className='message-content'>{message.content}</p>
         <div className='d-flex mt-2 message-actions'>
           <div className='d-flex'>
-            <FontAwesomeIcon className='mr-1' icon='thumbs-up'/>
+            <div className='add-like d-flex mr-1' onClick={() => likeOrUnlike(message.id)}>
+              <FontAwesomeIcon icon='thumbs-up' className={hasLiked.length > 0 ? 'liked' : 'not-liked'}/>
+              <p className='like-count'>{messageLikes.length}</p>
+            </div>
             <div className='toggle-comments d-flex' onClick={toggleView}>
               <FontAwesomeIcon icon='comment'/>
               <p className='comment-count'>{messageComments.length}</p>
@@ -51,10 +61,11 @@ const MessageItem = ({ getComments, message, comments, currentUser }) => {
 };
 
 const mapStateToProps = state => ({
-  comments: state.messages.comments
+  comments: state.messages.comments,
+  likes: state.messages.likes
 });
 
 export default connect(
   mapStateToProps,
-  { getComments }
+  { getComments, getLikes, addLike, removeLike }
 )(MessageItem);

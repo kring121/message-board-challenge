@@ -1,9 +1,10 @@
-import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, GET_COMMENTS, ADD_COMMENT, REMOVE_COMMENT, EDIT_COMMENT, TOGGLE_EDIT_COMMENT, REMOVE_MESSAGE, TOGGLE_EDIT_MESSAGE, EDIT_MESSAGE } from '../actions/types';
+import { GET_MESSAGES, GET_MESSAGE, MESSAGE_ERROR, ADD_MESSAGE, GET_COMMENTS, ADD_COMMENT, REMOVE_COMMENT, EDIT_COMMENT, TOGGLE_EDIT_COMMENT, REMOVE_MESSAGE, TOGGLE_EDIT_MESSAGE, EDIT_MESSAGE, ADD_LIKE, REMOVE_LIKE, GET_LIKES } from '../actions/types';
 
 const initialState = {
   messages: [],
   message: null,
   comments: [],
+  likes: [],
   error: {},
   toggleEditComment: false,
   toggleEditMessage: false,
@@ -43,45 +44,60 @@ export default function(state = initialState, action) {
       return {
         ...state,
         comments: payload
-      }
+      };
     case REMOVE_COMMENT:
       return {
         ...state,
         comments: state.comments.filter(comment => comment.id !== payload)
-      }
+      };
     case EDIT_COMMENT:
       return {
         ...state,
         comments: state.comments.map(comment =>
           comment.id === payload.id ? payload : comment
         )
-      }
+      };
     case EDIT_MESSAGE:
       return {
         ...state,
         messages: state.messages.map(message =>
           message.id === payload.id ? payload : message
         )
-      }
+      };
     case TOGGLE_EDIT_COMMENT:
-    return {
-      ...state,
-      toggleEditMessage: false,
-      toggleEditComment: !state.toggleEditComment,
-      editing: state.editing === null ? payload : null
-    }
+      return {
+        ...state,
+        toggleEditMessage: false,
+        toggleEditComment: !state.toggleEditComment,
+        editing: state.editing === null ? payload : null
+      };
     case TOGGLE_EDIT_MESSAGE:
-    return {
-      ...state,
-      toggleEditComment: false,
-      toggleEditMessage: !state.toggleEditMessage,
-      editing: state.editing === null ? payload : null
-    }
+      return {
+        ...state,
+        toggleEditComment: false,
+        toggleEditMessage: !state.toggleEditMessage,
+        editing: state.editing === null ? payload : null
+      };
     case REMOVE_MESSAGE:
-    return {
-      ...state,
-      messages: state.messages.filter(message => message.id !== payload)
-    }
+      return {
+        ...state,
+        messages: state.messages.filter(message => message.id !== payload)
+      };
+    case ADD_LIKE:
+      return {
+        ...state,
+        likes: [...state.likes, payload]
+      }
+    case REMOVE_LIKE:
+      return {
+        ...state,
+        likes: state.likes.filter(like => like.id !== payload)
+      };
+    case GET_LIKES:
+      return {
+        ...state,
+        likes: payload
+      }
     default:
       return state;
   }

@@ -18,3 +18,6 @@ export const TOGGLE_EDIT_COMMENT = 'TOGGLE_EDIT_COMMENT';
 export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
 export const TOGGLE_EDIT_MESSAGE = 'TOGGLE_EDIT_MESSAGE';
 export const EDIT_MESSAGE = 'EDIT_MESSAGE';
+export const ADD_LIKE = 'ADD_LIKE';
+export const REMOVE_LIKE = 'REMOVE_LIKE';
+export const GET_LIKES = 'GET_LIKES';

@@ -365,10 +365,22 @@ input {
   justify-content: flex-end;
 }
 
-/*Comments*/
-.comment-count {
+/*Comments & Likes*/
+.comment-count, .like-count {
   margin-left: .25rem;
   margin-top: -.2rem;
+}
+
+.add-like:hover {
+  cursor: pointer;
+}
+
+.liked path {
+  fill: var(--primary-color);
+}
+
+.not-liked path {
+  fill: var(--black-color);
 }
 
 .toggle-comments:hover {
