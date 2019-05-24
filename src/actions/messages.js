@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setAlert } from './alert';
 import {
   GET_MESSAGES,
   GET_MESSAGE,
@@ -56,6 +57,7 @@ export const addMessage = (title, content, author) => async dispatch => {
       type: ADD_MESSAGE,
       payload: res.data
     });
+    dispatch(setAlert('Message added', 'success'));
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
@@ -82,7 +84,8 @@ export const editMessage = (id, title, content, author) => async dispatch => {
     dispatch({
       type: TOGGLE_EDIT_MESSAGE,
       payload: res.data
-    })
+    });
+    dispatch(setAlert('Message updated', 'success'));
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
@@ -98,6 +101,7 @@ export const removeMessage = (id) => async dispatch => {
       type: REMOVE_MESSAGE,
       payload: id
     });
+    dispatch(setAlert('Message removed', 'success'));
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
@@ -129,6 +133,7 @@ export const addComment = (content, author, messageId) => async dispatch => {
       type: ADD_COMMENT,
       payload: res.data
     });
+    dispatch(setAlert('Comment added', 'success'));
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
@@ -155,7 +160,8 @@ export const editComment = (id, content, author, messageId) => async dispatch =>
     dispatch({
       type: TOGGLE_EDIT_COMMENT,
       payload: res.data
-    })
+    });
+    ispatch(setAlert('Comment updated', 'success'));
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,
@@ -171,6 +177,7 @@ export const removeComment = (id) => async dispatch => {
       type: REMOVE_COMMENT,
       payload: id
     });
+    dispatch(setAlert('Comment removed', 'success'));
   } catch(err) {
     dispatch({
       type: MESSAGE_ERROR,

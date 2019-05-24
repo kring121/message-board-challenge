@@ -10,6 +10,10 @@ export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAIL = 'SIGNUP_FAIL';
 export const LOGOUT = 'LOGOUT';
 
+// alert
+export const SET_ALERT = 'SET_ALERT';
+export const REMOVE_ALERT = 'REMOVE_ALERT';
+
 // messages
 export const GET_MESSAGES = 'GET_MESSAGES';
 export const GET_MESSAGE = 'GET_MESSAGE';

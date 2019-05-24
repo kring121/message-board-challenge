@@ -220,6 +220,36 @@ a:hover {
   text-align: right;
 }
 
+/*Alerts*/
+.alert {
+  position: fixed;
+  top: 8%;
+  padding: 1.4rem;
+  width: 70%;
+  max-width: 900px;
+  min-width: 300px;
+  text-align: center;
+  z-index: 1;
+  border-radius: .25rem;
+  flex-direction: column;
+}
+
+.alert svg {
+  align-self: flex-end;
+  margin-top: -.75rem;
+  cursor: pointer;
+}
+
+.alert-danger {
+  background: #f6cbd7;
+  color: var(--danger-color);
+}
+
+.alert-success {
+  background: #d9f0d1;
+  color: var(--success-color);
+}
+
 /*Forms*/
 form {
   text-align: left;

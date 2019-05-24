@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import MessageItem from './MessageItem';
 import MessageForm from './MessageForm';
 import EditMessage from './EditMessage';
+import Alert from '../alert/Alert';
 
 // Redux
 import { connect } from 'react-redux';
@@ -20,6 +21,7 @@ const Messages = ({ getMessages, messages, currentUser, isAuthenticated, editing
 
   return (
     <div className='message-feed mt-5 mb-3'>
+      <Alert/>
       <MessageForm currentUser={currentUser}/>
       {messages.map(message => (
           toggleEditMessage === true && message.id === editing.id ? <EditMessage key={message.id} message={message}/> : <MessageItem key={message.id} message={message} currentUser={currentUser}/>

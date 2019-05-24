@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setAlert } from './alert';
 import {
   LAUNCH_SIGNUP,
   LAUNCH_LOGIN,
@@ -38,9 +39,7 @@ export const login = (username, password) => async dispatch => {
         payload: username
       });
     } else {
-      dispatch({
-        type: LOGIN_FAIL
-      });
+      dispatch(setAlert('Invalid credentials', 'danger'));
     }
   } catch(err) {
       dispatch({
@@ -62,9 +61,7 @@ export const signUp = (username, password) => async dispatch => {
         payload: username
       });
     } else {
-      dispatch({
-        type: SIGNUP_FAIL
-      });
+      dispatch(setAlert('User already exists', 'danger'));
     }
   } catch(err) {
     dispatch({

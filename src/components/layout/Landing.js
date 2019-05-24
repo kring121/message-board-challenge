@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Login from '../auth/Login';
 import SignUp from '../auth/SignUp';
+import Alert from '../alert/Alert';
 
 // Redux
 import { connect } from 'react-redux';
@@ -9,6 +10,7 @@ import { launchSignup, launchLogin } from '../../actions/auth';
 
 const Landing = ({ launchSignup, launchLogin, loginLaunched, signUpLaunched }) => (
   <div className='landing text-center'>
+    <Alert/>
     <div className='landing-inner'>
       {loginLaunched ? <Login/> : null}
       {signUpLaunched ? <SignUp/> : null}

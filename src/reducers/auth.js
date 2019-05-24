@@ -13,7 +13,8 @@ const initialState = {
   signUpLaunched: false,
   loginLaunched: false,
   isAuthenticated: null,
-  currentUser: null
+  currentUser: null,
+  error: {}
 }
 
 export default function(state = initialState, action) {
@@ -49,7 +50,8 @@ export default function(state = initialState, action) {
     case SIGNUP_FAIL:
       return {
         ...state,
-        isAuthenticated: false
+        isAuthenticated: false,
+        error: payload
       }
     case LOGOUT:
       return {
