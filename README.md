@@ -9,9 +9,8 @@ The purpose of this application was really just to demonstrate my abilities as a
 1. Clone the repository
 2. cd into the message-board-challenge folder
 3. install the dependencies `yarn install`
-
-To run the application `yarn start`
-To build the application `yarn build`
+- To run the application `yarn start`
+- To build the application `yarn build`
 
 ##Technology used:
 - React
