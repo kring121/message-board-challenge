@@ -14,11 +14,11 @@ To run the application `yarn start`
 To build the application `yarn build`
 
 ##Technology used:
--React
--Redux
--Webpack/Babel
--json-server
--axios
--uuid
--moment
--concurrently
+- React
+- Redux
+- Webpack/Babel
+- json-server
+- axios
+- uuid
+- moment
+- concurrently
