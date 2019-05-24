@@ -52,11 +52,18 @@ const MessageItem = ({ getComments, getLikes, message, comments, likes, currentU
             </div>
           </div>
           {
-            message.author === currentUser ? <MessageOptions message={message}/> : null
+            message.author === currentUser ?
+            <MessageOptions message={message}/>
+            : null
           }
         </div>
       </div>
-      {messageComments.length !== 0 && viewComments ? <CommentList comments={messageComments} currentUser={currentUser}/> : null}
+      {
+        messageComments.length !== 0
+        && viewComments ?
+        <CommentList comments={messageComments} currentUser={currentUser}/>
+        : null
+      }
       <CommentForm messageId={message.id}/>
     </Fragment>
   );

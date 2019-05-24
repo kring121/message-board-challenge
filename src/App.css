@@ -234,12 +234,6 @@ a:hover {
   flex-direction: column;
 }
 
-.alert svg {
-  align-self: flex-end;
-  margin-top: -.75rem;
-  cursor: pointer;
-}
-
 .alert-danger {
   background: #f6cbd7;
   color: var(--danger-color);

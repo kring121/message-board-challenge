@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Redux
 import { connect } from 'react-redux';
 
-const Alert = ({ alerts }) =>
+const Alert = ({ alerts }) => (
   alerts !== null &&
   alerts.length > 0 &&
   alerts.map(alert => (
-    <div key={alert.id} className={`alert d-flex alert-${alert.alertType}`}>
-      <FontAwesomeIcon icon='times'/>
-      <p>{alert.msg}</p>
+    <div key={alert.id} className={`alert alert-${alert.alertType}`}>
+      {alert.msg}
     </div>
-  ));
+  ))
+)
 
 Alert.propTypes = {
   alerts: PropTypes.array.isRequired

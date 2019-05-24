@@ -13,6 +13,13 @@
       "author": "kring121",
       "date": 1558639867794,
       "id": 2
+    },
+    {
+      "title": "What's the best kebab place in Stockholm?",
+      "content": "Hi, I will be traveling to Stockholm soon and I really want Kebab pizza. Please let me know your favorite places to get kebab!",
+      "author": "typicode",
+      "date": 1558657703910,
+      "id": 3
     }
   ],
   "comments": [
@@ -34,6 +41,16 @@
       "messageId": 1,
       "author": "kring121",
       "id": 1
+    },
+    {
+      "messageId": 2,
+      "author": "typicode",
+      "id": 2
+    },
+    {
+      "messageId": 3,
+      "author": "kring121",
+      "id": 3
     }
   ],
   "users": [

@@ -10,7 +10,12 @@ const CommentList = ({ comments, currentUser, editing, toggleEditComment }) => (
   <div className='comment-list'>
     {comments.map(comment => (
       <Fragment key={`comment-${comment.id}`}>
-        { toggleEditComment === true && comment.id === editing.id ? <EditComment comment={comment}/> : <Comment comment={comment} currentUser={currentUser}/>}
+        {
+          toggleEditComment === true &&
+          comment.id === editing.id ?
+          <EditComment comment={comment}/>
+          : <Comment comment={comment} currentUser={currentUser}/>
+        }
       </Fragment>
       )
     )}

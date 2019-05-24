@@ -24,7 +24,10 @@ const Messages = ({ getMessages, messages, currentUser, isAuthenticated, editing
       <Alert/>
       <MessageForm currentUser={currentUser}/>
       {messages.map(message => (
-          toggleEditMessage === true && message.id === editing.id ? <EditMessage key={message.id} message={message}/> : <MessageItem key={message.id} message={message} currentUser={currentUser}/>
+          toggleEditMessage === true &&
+          message.id === editing.id ?
+          <EditMessage key={message.id} message={message}/>
+          : <MessageItem key={message.id} message={message} currentUser={currentUser}/>
         ))
       }
     </div>
