@@ -12,7 +12,7 @@ The purpose of this application was really just to demonstrate my abilities as a
 - To run the application `yarn start`
 - To build the application `yarn build`
 
-##Technology used:
+## Technology used:
 - React
 - Redux
 - Webpack/Babel
